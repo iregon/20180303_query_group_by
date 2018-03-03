@@ -16,3 +16,16 @@ FROM valutazioni
 GROUP BY (materia)
 ORDER BY AVG(voto) DESC
 
+/*
+Per ogni professore calcolare il numero totale di ore di insegnamento, visualizzando l'elenco
+dei nominativi con i corrispondenti valori calcolati
+*/
+SELECT p.codiceProfessore, p.cognome, p.nome, SUM(i.numeroOre)
+FROM professori p,insegnano i
+WHERE p.codiceProfessore = i.codiceProfessore
+GROUP BY (p.codiceProfessore)
+
+SELECT p.codiceProfessore, p.cognome, p.nome, SUM(i.numeroOre)
+FROM professori p,insegnano i
+WHERE p.codiceProfessore = i.codiceProfessore
+GROUP BY p.codiceProfessore, p.cognome, p.nome
